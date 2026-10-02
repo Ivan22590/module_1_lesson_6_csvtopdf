@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товары - Отчёт</title>
+    <style>
+        @page { size: A4; margin: 20mm 15mm; }
+        body { font-family: 'Segoe UI', Arial, 'Helvetica Neue', sans-serif; color: #333; }
+        h1 { text-align: center; color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 12px; }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        thead th { background: #3498db; color: #fff; padding: 12px 10px; text-align: left; }
+        tbody td { padding: 10px; border-bottom: 1px solid #ddd; }
+        tbody tr:nth-child(even) { background: #f8f9fa; }
+        td.price, td.qty { text-align: right; }
+        td.price::after { content: " \20BD"; color: #888; }
+        .footer { text-align: center; color: #999; font-size: 11px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Список товаров</h1>
+    <table>
+        <thead>
+            <tr><th>Наименование</th><th>Цена</th><th>Количество</th></tr>
+        </thead>
+        <tbody>
+        {% for row in rows %}
+            <tr>
+                <td>{{ row.product }}</td>
+                <td class="price">{{ row.price }}</td>
+                <td class="qty">{{ row.qty }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="footer">Сгенерировано {{ date }}</div>
+</body>
+</html>
